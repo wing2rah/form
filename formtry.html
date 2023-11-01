@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Data Extraction</title>
+</head>
+<body>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdaG1rcIxVbDv5hVA-mml0E5OJKhHrahWCtuVAk-hjml9E2oQ/viewform?embedded=true" id="form-iframe" width="340" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    <button id="extract-button">Extract Data</button>
+
+    <script>
+        document.getElementById("extract-button").addEventListener("click", function () {
+            // Get the iframe element
+            var iframe = document.getElementById("form-iframe");
+
+            // Access the contentDocument of the iframe
+            var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+            // Find and extract form elements
+            var formElements = iframeDoc.querySelectorAll("form input, form select, form textarea");
+
+            // Loop through form elements and log their values
+            formElements.forEach(function (element) {
+                alert(element.name + ": " + element.value);
+            });
+        });
+    </script>
+</body>
+</html>
